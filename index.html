@@ -85,6 +85,7 @@
     <div class="form-floating">
       <input type="text" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Email address</label>
+      <p id="aler">Mail</p>
     </div>
     <div class="form-floating">
       <input type="password" name="name" class="form-control" id="floatingPassword" placeholder="Password">
@@ -105,13 +106,19 @@
 </main>
 
 <!-- Código de instalación Cliengo para https://old-bits.vercel.app --> <script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/62d3df51d5c213002abba077/62d3e15bd5c213002abba080.js?platform=onboarding_modular'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();
-   function validarEmail(floatingInpu) {
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(floatingInpu)){
-   alert("La dirección de email " + valor + " es correcta.");
-  } else {
-   alert("La dirección de email es incorrecta.");
-  }
-} </script>
+   document.getElementById('floatingInput').addEventListener('input', function() {
+    campo = event.target;
+    valido = document.getElementById('aler');
+        
+    emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    //Se muestra un texto a modo de ejemplo, luego va a ser un icono
+    if (emailRegex.test(campo.value)) {
+      valido.innerText = "válido";
+    } else {
+      valido.innerText = "incorrecto";
+    }
+});
+    </script>
     
   </body>
 </html>
